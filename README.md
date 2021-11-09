@@ -1,27 +1,41 @@
-# AngularTest
+Checking the initial skills: Angular, core, common, router
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 13.0.1.
+Task
+Implement an application that can display the following pages:
 
-## Development server
+/ - home
+/login - login and password entry page
+/news - news page (any information of the same type)
+Just show some 	
+/profile - a page with free text, unavailable without authorization
+On the site, in the header or basement, implement the links:
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
+To the main (/)
+News (/ news)
+https://newsapi.org/ - use this open api to show any random news. 
+Profile (/ profile)
+If the user clicks on the "profile" page and he is not "authorized" - throw on the / login page
 
-## Code scaffolding
+The login form (/ login) accepts fake data:
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+username: admin
+password: 12345
 
-## Build
+If other data is entered, the following messages are displayed:
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory.
+The username or password you entered is incorrect
 
-## Running unit tests
+If the correct data is entered, then redirect to the / profile page
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
+User authorization information can be stored in localStorage, with a simple true / false parameter. The database does not need to be implemented. Application parts should be separated into modules, use lazy loading where it makes sense. 
+Also feel free to use Firebase to solve the authentication part, if task is to easy for you.
 
-## Running end-to-end tests
 
-Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To use this command, you need to first add a package that implements end-to-end testing capabilities.
+Design (design) is not important just use some css framework like (https://bulma.io/ or https://getbootstrap.com/). Make it so that you can comfortably watch an example in a browser. 
 
-## Further help
 
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
+Conditions
+Issue a code on GitHub with a sensible Readme.md.
+
+P.S. If you are unable to do part of the task, then send the solution anyway, indicating what exactly did not work out and why.
+
