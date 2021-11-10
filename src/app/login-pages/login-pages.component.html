@@ -1,9 +1,9 @@
-<form class="row g-3"  (submit)="userSignIn()">
+<form class="row g-3"  [formGroup]="loginForm" (ngSubmit)="onSubmit()">
   <div class="col-md-2">
     <label for="inputEmail4" class="form-label">Login</label>
     <input
       type="text"
-      [(ngModel)]="login"
+      formControlName="login"
       name="login"
       class="form-control"
       id="inputEmail4"
@@ -15,7 +15,7 @@
     <label for="inputPassword4" class="form-label">Password</label>
     <input
       type="password"
-      [(ngModel)]="password"
+      formControlName="password"
       name="password"
       class="form-control"
       id="inputPassword4"

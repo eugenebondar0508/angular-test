@@ -1,5 +1,8 @@
 import { Component, OnInit } from '@angular/core';
+import { FormControl, FormGroup } from '@angular/forms';
+import { Router } from '@angular/router';
 import { AuthService } from '../service/auth.service';
+
 
 @Component({
   selector: 'app-login-pages',
@@ -7,23 +10,26 @@ import { AuthService } from '../service/auth.service';
   styleUrls: ['./login-pages.component.scss']
 })
 export class LoginPagesComponent implements OnInit {
-
-  login!: string;
-  password!: string;
-  constructor(private authService: AuthService ) { }
+  loginForm = new FormGroup({
+    login: new FormControl(''),
+    password: new FormControl(''),
+  })
+  constructor(private auth: AuthService, private router: Router) { }
 
   ngOnInit(): void {
   }
 
-  userSignIn(): any {
-   const user = {
-     login: this.login,
-     password: this.password,
-   };
-   if(!this.authService.checkLogin(user.login)) {
-     return false;
-   } else if (!this.authService.checkPassword(user.password)) {
-    return false;
+  onSubmit() {
+    if(this.loginForm.valid) {
+      this.auth.login(this.loginForm.value).subscribe(
+        (result) => {
+          this.router.navigate(['profile'])
+        },
+        (err: Error) => {
+          alert(err.message)
+        }
+      );
+    }
   }
-  }
+
 }

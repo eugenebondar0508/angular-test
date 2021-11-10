@@ -11,7 +11,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { AuthService } from './service/auth.service';
 
-import { NewsapiservicesService } from './service/newsapiservices.service';
+import { NewsService } from './service/news.service';
 
 
 
@@ -30,7 +30,7 @@ import { NewsapiservicesService } from './service/newsapiservices.service';
     FormsModule,
     ReactiveFormsModule,
   ],
-  providers: [NewsapiservicesService, AuthService],
+  providers: [NewsService, AuthService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

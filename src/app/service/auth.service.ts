@@ -1,26 +1,31 @@
 import { Injectable } from '@angular/core';
-
+import { Router } from '@angular/router';
+import { Observable, of, throwError } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
 })
 export class AuthService {
 
-  constructor() { }
+  constructor(private router: Router) { }
 
-  checkLogin(login: any) {
-    if(login == undefined || login !== 'admin') {
-      return false;
-    } else {
-      return true;
-    }
+  setToken(token: string): void {
+    localStorage.setItem('token', token)
   }
 
-  checkPassword(password: any) {
-    if(password == undefined || password !== '12345') {
-      return false;
-    } else {
-      return true;
+  getToken():string | null {
+    return localStorage.getItem('token');
+  }
+
+  isLoggedIn() {
+    return this.getToken() !== null;
+  }
+
+  login({ login, password }: any): Observable<any> {
+    if(login === 'admin' && password === '12345') {
+      this.setToken('asdfghjkllkjhgfdsa');
+      return of({ login: 'login', password: 'password'})
     }
+    return throwError(new Error('Failed to login'))
   }
 }

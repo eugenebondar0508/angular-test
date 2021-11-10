@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import {NewsapiservicesService} from '../service/newsapiservices.service'
+import {NewsService} from '../service/news.service'
 
 
 @Component({
@@ -9,12 +9,12 @@ import {NewsapiservicesService} from '../service/newsapiservices.service'
 })
 export class NewsPagesComponent implements OnInit {
 
-  constructor(private _services: NewsapiservicesService) {}
+  constructor(private _services: NewsService) {}
 
   news:any = [];
 
   ngOnInit(): void {
-    this._services.newsPages().subscribe((news) => {
+    this._services.getNews().subscribe((news) => {
       this.news = news.articles;
     })
   }

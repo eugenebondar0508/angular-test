@@ -6,11 +6,11 @@ import { Observable } from 'rxjs';
 @Injectable({
   providedIn: 'root'
 })
-export class NewsapiservicesService {
+export class NewsService {
 
   constructor(private _http: HttpClient) { }
 
-  newsPages():Observable<any> {
+  getNews():Observable<any> {
     return this._http.get(environment.apiUrl)
   }
 }
